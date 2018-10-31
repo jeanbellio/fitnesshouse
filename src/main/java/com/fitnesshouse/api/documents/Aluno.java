@@ -24,7 +24,7 @@ public class Aluno {
 	private List<Feedback> feedbacks;
 	private Login login;
 	
-	public Aluno(String id, String nome, String email, String senha, long idade, String sexo, List<Treino> treinos,
+	/*public Aluno(String id, String nome, String email, String senha, long idade, String sexo, List<Treino> treinos,
 			Professor professor, List<Mensagem> mensagens, List<Feedback> feedbacks, Login login) {
 		super();
 		this.id = id;
@@ -38,7 +38,7 @@ public class Aluno {
 		this.mensagens = mensagens;
 		this.feedbacks = feedbacks;
 		this.login = login;
-	}
+	}*/
 
 	public Aluno() {
 		super();

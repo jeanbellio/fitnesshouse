@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fitnesshouse.api.documents.Professor;
-import com.fitnesshouse.api.responses.Response;
+import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.ProfessorService;
 
 @RestController
-@RequestMapping(path = "/api/clientes")
+@RequestMapping(path = "/api/professores")
 public class ProfessorController {
 
 	@Autowired

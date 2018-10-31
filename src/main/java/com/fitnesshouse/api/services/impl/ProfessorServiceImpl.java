@@ -10,20 +10,19 @@ import com.fitnesshouse.api.repositories.ProfessorRepository;
 import com.fitnesshouse.api.services.ProfessorService;
 
 @Service
-public class ProfessorServiceImpl implements ProfessorService{
+public class ProfessorServiceImpl implements ProfessorService {
 
 	@Autowired
 	private ProfessorRepository professorRepository;
 	
 	@Override
 	public List<Professor> listarTodos() {
-		return this.professorRepository.findAll();
+		return this.professorRepository.findAll(); 
 	}
 
 	@Override
 	public Professor listarPorId(String id) {
-		return null;
-		//return this.professorRepository.findById(id);
+		return this.professorRepository.findOne(id);
 	}
 
 	@Override
@@ -38,8 +37,7 @@ public class ProfessorServiceImpl implements ProfessorService{
 
 	@Override
 	public void remover(String id) {
-		this.professorRepository.deleteById(id);
+		this.professorRepository.delete(id);
 	}
-
 
 }

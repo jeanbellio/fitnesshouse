@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fitnesshouse.api.documents.Aluno;
-import com.fitnesshouse.api.responses.Response;
+import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.AlunoService;
 
 @RestController
-@RequestMapping(path = "/api/clientes")
+@RequestMapping(path = "/api/treinos")
 public class TreinoController {
 
 	@Autowired

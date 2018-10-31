@@ -10,20 +10,19 @@ import com.fitnesshouse.api.repositories.TreinoRepository;
 import com.fitnesshouse.api.services.TreinoService;
 
 @Service
-public class TreinoServiceImpl implements TreinoService{
+public class TreinoServiceImpl implements TreinoService {
 
 	@Autowired
 	private TreinoRepository treinoRepository;
 	
 	@Override
 	public List<Treino> listarTodos() {
-		return this.treinoRepository.findAll();
+		return this.treinoRepository.findAll(); 
 	}
 
 	@Override
 	public Treino listarPorId(String id) {
-		return null;
-		//return this.treinoRepository.findById(id);
+		return this.treinoRepository.findOne(id);
 	}
 
 	@Override
@@ -38,8 +37,7 @@ public class TreinoServiceImpl implements TreinoService{
 
 	@Override
 	public void remover(String id) {
-		this.treinoRepository.deleteById(id);
+		this.treinoRepository.delete(id);
 	}
-
 
 }
