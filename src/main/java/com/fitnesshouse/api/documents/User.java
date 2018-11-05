@@ -55,11 +55,11 @@ public class User {
 		this.email = email;
 	}
 
-	public long getOld() {
+	public long getAge() {
 		return age;
 	}
 
-	public void setOld(long age) {
+	public void setAge(long age) {
 		this.age = age;
 	}
 
