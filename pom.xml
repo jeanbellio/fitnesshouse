@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.fitnesshouse</groupId>
-	<artifactId>crud</artifactId>
+	<artifactId>fitnesshouseapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Crud</name>
+	<name>FitnessHouse</name>
 	<description>API Restful FitnessHouse</description>
 
 	<parent>

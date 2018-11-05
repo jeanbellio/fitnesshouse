@@ -17,53 +17,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitnesshouse.api.documents.Aluno;
+import com.fitnesshouse.api.documents.Workout;
 import com.fitnesshouse.api.response.Response;
-import com.fitnesshouse.api.services.AlunoService;
+import com.fitnesshouse.api.services.WorkoutService;
 
 @RestController
-@RequestMapping(path = "/api/alunos")
-public class AlunoController {
+@RequestMapping(path = "/api/workout")
+public class WorkoutController {
 
 	@Autowired
-	private AlunoService alunoService;
+	private WorkoutService workoutService;
 	
 	@GetMapping
-	public ResponseEntity<Response<List<Aluno>>> listarTodos(){
-		return ResponseEntity.ok(new Response<List<Aluno>>(this.alunoService.listarTodos()));
+	public ResponseEntity<Response<List<Workout>>> findAll(){
+		return ResponseEntity.ok(new Response<List<Workout>>(this.workoutService.findAll()));
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Aluno>> listarPorId(@PathVariable(name = "id") String id) {
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.listarPorId(id)));
+	public ResponseEntity<Response<Workout>> findById(@PathVariable(name = "id") String id) {
+		return ResponseEntity.ok(new Response<Workout>(this.workoutService.findById(id)));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response<Aluno>> cadastrar(@Valid @RequestBody Aluno aluno, BindingResult result) {
+	public ResponseEntity<Response<Workout>> create(@Valid @RequestBody Workout workout, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Aluno>(erros));
+			return ResponseEntity.badRequest().body(new Response<Workout>(erros));
 		}
 		
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.cadastrar(aluno)));
+		return ResponseEntity.ok(new Response<Workout>(this.workoutService.create(workout)));
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Aluno>> atualizar(@PathVariable(name = "id") String id, @Valid @RequestBody Aluno aluno, BindingResult result) {
+	public ResponseEntity<Response<Workout>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Workout workout, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Aluno>(erros));
+			return ResponseEntity.badRequest().body(new Response<Workout>(erros));
 		}
 		
-		aluno.setId(id);
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.atualizar(aluno)));
+		workout.setId(id);
+		return ResponseEntity.ok(new Response<Workout>(this.workoutService.update(workout)));
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Response<Integer>> remover(@PathVariable(name = "id") String id) {
-		this.alunoService.remover(id);
+	public ResponseEntity<Response<Integer>> delete(@PathVariable(name = "id") String id) {
+		this.workoutService.delete(id);
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 	

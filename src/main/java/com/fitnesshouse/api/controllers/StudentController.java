@@ -17,53 +17,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitnesshouse.api.documents.Aluno;
+import com.fitnesshouse.api.documents.Student;
 import com.fitnesshouse.api.response.Response;
-import com.fitnesshouse.api.services.AlunoService;
+import com.fitnesshouse.api.services.StudentService;
 
 @RestController
-@RequestMapping(path = "/api/treinos")
-public class TreinoController {
+@RequestMapping(path = "/api/student")
+public class StudentController {
 
 	@Autowired
-	private AlunoService alunoService;
+	private StudentService studentService;
 	
 	@GetMapping
-	public ResponseEntity<Response<List<Aluno>>> listarTodos(){
-		return ResponseEntity.ok(new Response<List<Aluno>>(this.alunoService.listarTodos()));
+	public ResponseEntity<Response<List<Student>>> findAll(){
+		return ResponseEntity.ok(new Response<List<Student>>(this.studentService.findAll()));
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Aluno>> listarPorId(@PathVariable(name = "id") String id) {
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.listarPorId(id)));
+	public ResponseEntity<Response<Student>> findById(@PathVariable(name = "id") String id) {
+		return ResponseEntity.ok(new Response<Student>(this.studentService.findById(id)));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response<Aluno>> cadastrar(@Valid @RequestBody Aluno aluno, BindingResult result) {
+	public ResponseEntity<Response<Student>> create(@Valid @RequestBody Student student, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Aluno>(erros));
+			return ResponseEntity.badRequest().body(new Response<Student>(erros));
 		}
 		
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.cadastrar(aluno)));
+		return ResponseEntity.ok(new Response<Student>(this.studentService.create(student)));
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Aluno>> atualizar(@PathVariable(name = "id") String id, @Valid @RequestBody Aluno aluno, BindingResult result) {
+	public ResponseEntity<Response<Student>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Student student, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Aluno>(erros));
+			return ResponseEntity.badRequest().body(new Response<Student>(erros));
 		}
 		
-		aluno.setId(id);
-		return ResponseEntity.ok(new Response<Aluno>(this.alunoService.atualizar(aluno)));
+		student.setId(id);
+		return ResponseEntity.ok(new Response<Student>(this.studentService.update(student)));
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public ResponseEntity<Response<Integer>> remover(@PathVariable(name = "id") String id) {
-		this.alunoService.remover(id);
+	public ResponseEntity<Response<Integer>> delete(@PathVariable(name = "id") String id) {
+		this.studentService.delete(id);
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 	

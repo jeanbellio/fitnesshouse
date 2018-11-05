@@ -9,22 +9,22 @@ public class Feedback {
 	@Id
 	private String id;
 
-	private Professor professor;
-	private String descricao;
-	private Aluno aluno;
+	private Teacher teacher;
+	private String description;
+	private Student student;
 	private boolean anonimo;
 	
-	public Feedback(String id, Professor professor, String descricao, Aluno aluno, boolean anonimo) {
-		super();
-		this.id = id;
-		this.professor = professor;
-		this.descricao = descricao;
-		this.aluno = aluno;
-		this.anonimo = anonimo;
-	}
-
 	public Feedback() {
 		super();
+	}
+
+	public Feedback(String id, Teacher teacher, String description, Student student, boolean anonimo) {
+		super();
+		this.id = id;
+		this.teacher = teacher;
+		this.description = description;
+		this.student = student;
+		this.anonimo = anonimo;
 	}
 
 	public String getId() {
@@ -35,28 +35,28 @@ public class Feedback {
 		this.id = id;
 	}
 
-	public Professor getProfessor() {
-		return professor;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public boolean isAnonimo() {
@@ -66,6 +66,5 @@ public class Feedback {
 	public void setAnonimo(boolean anonimo) {
 		this.anonimo = anonimo;
 	}
-	
 	
 }

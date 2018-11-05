@@ -17,53 +17,53 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitnesshouse.api.documents.Professor;
+import com.fitnesshouse.api.documents.Teacher;
 import com.fitnesshouse.api.response.Response;
-import com.fitnesshouse.api.services.ProfessorService;
+import com.fitnesshouse.api.services.TeacherService;
 
 @RestController
-@RequestMapping(path = "/api/professores")
-public class ProfessorController {
+@RequestMapping(path = "/api/teacher")
+public class TeacherController {
 
 	@Autowired
-	private ProfessorService professorService;
+	private TeacherService teacherService;
 	
 	@GetMapping
-	public ResponseEntity<Response<List<Professor>>> listarTodos(){
-		return ResponseEntity.ok(new Response<List<Professor>>(this.professorService.listarTodos()));
+	public ResponseEntity<Response<List<Teacher>>> listarTodos(){
+		return ResponseEntity.ok(new Response<List<Teacher>>(this.teacherService.findAll()));
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Response<Professor>> listarPorId(@PathVariable(name = "id") String id) {
-		return ResponseEntity.ok(new Response<Professor>(this.professorService.listarPorId(id)));
+	public ResponseEntity<Response<Teacher>> listarPorId(@PathVariable(name = "id") String id) {
+		return ResponseEntity.ok(new Response<Teacher>(this.teacherService.findById(id)));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Response<Professor>> cadastrar(@Valid @RequestBody Professor professor, BindingResult result) {
+	public ResponseEntity<Response<Teacher>> cadastrar(@Valid @RequestBody Teacher teacher, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Professor>(erros));
+			return ResponseEntity.badRequest().body(new Response<Teacher>(erros));
 		}
 		
-		return ResponseEntity.ok(new Response<Professor>(this.professorService.cadastrar(professor)));
+		return ResponseEntity.ok(new Response<Teacher>(this.teacherService.create(teacher)));
 	}
 	
 	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Professor>> atualizar(@PathVariable(name = "id") String id, @Valid @RequestBody Professor professor, BindingResult result) {
+	public ResponseEntity<Response<Teacher>> atualizar(@PathVariable(name = "id") String id, @Valid @RequestBody Teacher teacher, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
-			return ResponseEntity.badRequest().body(new Response<Professor>(erros));
+			return ResponseEntity.badRequest().body(new Response<Teacher>(erros));
 		}
 		
-		professor.setId(id);
-		return ResponseEntity.ok(new Response<Professor>(this.professorService.atualizar(professor)));
+		teacher.setId(id);
+		return ResponseEntity.ok(new Response<Teacher>(this.teacherService.update(teacher)));
 	}
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Response<Integer>> remover(@PathVariable(name = "id") String id) {
-		this.professorService.remover(id);
+		this.teacherService.delete(id);
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 	

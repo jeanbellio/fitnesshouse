@@ -1,4 +1,4 @@
-package com.jean.api;
+package com.fitnesshouse.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
