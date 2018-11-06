@@ -38,6 +38,11 @@ public class StudentController {
 		return ResponseEntity.ok(new Response<Student>(this.studentService.findById(id)));
 	}
 	
+	@GetMapping(path = "/name/{name}")
+	public ResponseEntity<Response<List<Student>>> findByName(@PathVariable("name") String name) {
+		return ResponseEntity.ok(new Response<List<Student>>(this.studentService.findByName(name)));
+	}
+	
 	@PostMapping
 	public ResponseEntity<Response<Student>> create(@Valid @RequestBody Student student, BindingResult result) {
 		if (result.hasErrors()) {

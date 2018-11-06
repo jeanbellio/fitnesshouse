@@ -40,4 +40,9 @@ public class StudentServiceImpl implements StudentService {
 		this.studentRepository.delete(id);
 	}
 
+	@Override
+	public List<Student> findByName(String name) {
+		return this.studentRepository.findByName(name);
+	}
+
 }

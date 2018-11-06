@@ -14,4 +14,6 @@ public interface StudentService {
 	Student update(Student student);
 	
 	void delete(String id);
+	
+	List<Student> findByName(String name);
 }
