@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Student extends User {
 
 	private List<WorkoutSheet> workoutSheet;
-	private Teacher teacher;
+	private String idTeacher;
 	private List<Message> messages;
 	private List<Feedback> feedbacks;
 
@@ -16,11 +16,11 @@ public class Student extends User {
 		super();
 	}
 
-	public Student(List<WorkoutSheet> workoutSheet, Teacher teacher, List<Message> messages,
+	public Student(List<WorkoutSheet> workoutSheet, String idTeacher, List<Message> messages,
 			List<Feedback> feedbacks) {
 		super();
 		this.workoutSheet = workoutSheet;
-		this.teacher = teacher;
+		this.idTeacher = idTeacher;
 		this.messages = messages;
 		this.feedbacks = feedbacks;
 	}
@@ -33,12 +33,12 @@ public class Student extends User {
 		this.workoutSheet = workoutSheet;
 	}
 
-	public Teacher getTeacher() {
-		return teacher;
+	public String getIdTeacher() {
+		return idTeacher;
 	}
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
+	public void setIdTeacher(String idTeacher) {
+		this.idTeacher = idTeacher;
 	}
 
 	public List<Message> getMessages() {

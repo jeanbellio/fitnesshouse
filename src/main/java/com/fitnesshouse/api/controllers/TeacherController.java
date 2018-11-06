@@ -88,8 +88,9 @@ public class TeacherController {
 				if (student != null) {
 					teacher = this.teacherService.findById(idTeacher);
 					if (teacher != null) {
+						student.setIdTeacher(idTeacher);
+						this.studentService.update(student);
 						teacher.getStudents().add(student);
-						// implementar vinculo no student
 						return ResponseEntity.ok(new Response<Teacher>(this.teacherService.update(teacher)));
 					} else {
 						erros.add("invalid idTeacher");
