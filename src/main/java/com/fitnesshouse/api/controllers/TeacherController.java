@@ -42,6 +42,11 @@ public class TeacherController {
 	public ResponseEntity<Response<Teacher>> findById(@PathVariable(name = "id") String id) {
 		return ResponseEntity.ok(new Response<Teacher>(this.teacherService.findById(id)));
 	}
+	
+	@GetMapping(path = "/name/{name}")
+	public ResponseEntity<Response<List<Teacher>>> findByName(@PathVariable("name") String name) {
+		return ResponseEntity.ok(new Response<List<Teacher>>(this.teacherService.findByName(name)));
+	}
 
 	@PostMapping
 	public ResponseEntity<Response<Teacher>> create(@Valid @RequestBody Teacher teacher, BindingResult result) {
