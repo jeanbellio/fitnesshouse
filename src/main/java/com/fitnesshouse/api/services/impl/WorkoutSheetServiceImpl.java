@@ -14,10 +14,10 @@ public class WorkoutSheetServiceImpl implements WorkoutSheetService {
 
 	@Autowired
 	private WorkoutSheetRepository workoutSheetRepository;
-	
+
 	@Override
 	public List<WorkoutSheet> findAll() {
-		return this.workoutSheetRepository.findAll(); 
+		return this.workoutSheetRepository.findAll();
 	}
 
 	@Override
@@ -40,4 +40,8 @@ public class WorkoutSheetServiceImpl implements WorkoutSheetService {
 		this.workoutSheetRepository.delete(id);
 	}
 
+	@Override
+	public List<WorkoutSheet> findByIdStudent(String idStudent) {
+		return this.workoutSheetRepository.findByIdStudent(idStudent);
+	}
 }
