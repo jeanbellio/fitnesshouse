@@ -1,5 +1,7 @@
 package com.fitnesshouse.api.documents;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -39,6 +41,7 @@ public class User {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Nome não pode ser vazio")
 	public String getName() {
 		return name;
 	}
@@ -47,6 +50,8 @@ public class User {
 		this.name = name;
 	}
 
+	@NotEmpty(message = "Email não pode ser vazio")
+	@Email(message = "Email inválido")
 	public String getEmail() {
 		return email;
 	}
@@ -63,6 +68,7 @@ public class User {
 		this.age = age;
 	}
 
+	@NotEmpty(message = "Sexo não pode ser vazio")
 	public String getSex() {
 		return sex;
 	}
@@ -71,6 +77,7 @@ public class User {
 		this.sex = sex;
 	}
 
+	@NotEmpty(message = "Username não pode ser vazio")
 	public String getUsername() {
 		return username;
 	}
@@ -79,6 +86,7 @@ public class User {
 		this.username = username;
 	}
 
+	@NotEmpty(message = "Senha não pode ser vazio")
 	public String getPassword() {
 		return password;
 	}

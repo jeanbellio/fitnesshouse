@@ -2,6 +2,7 @@ package com.fitnesshouse.api.documents;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -53,6 +54,7 @@ public class Message {
 		this.teacher = teacher;
 	}
 
+	@NotEmpty(message = "Mensagem não pode ser vazio")
 	public String getMessage() {
 		return message;
 	}

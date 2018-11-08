@@ -8,20 +8,30 @@ public class Serie {
 	
 	@Id
 	private String id;
-	private double carga;
-	private long repeticoes;
-	private long qtdSeries;
 	
-	public Serie(String id, double carga, long repeticoes, long qtdSeries) {
-		super();
-		this.id = id;
-		this.carga = carga;
-		this.repeticoes = repeticoes;
-		this.qtdSeries = qtdSeries;
-	}
-
+	private String weight;
+	private int sprints;
+	private String time;
+	private long repetitions;
+	private Student student;
+	private Exercise exercise;
+	private Workout workout;
+	
 	public Serie() {
 		super();
+	}
+
+	public Serie(String id, String weight, int sprints, String time, long repetitions, Student student, Exercise exercise,
+			Workout workout) {
+		super();
+		this.id = id;
+		this.weight = weight;
+		this.sprints = sprints;
+		this.time = time;
+		this.repetitions = repetitions;
+		this.student = student;
+		this.exercise = exercise;
+		this.workout = workout;
 	}
 
 	public String getId() {
@@ -32,28 +42,60 @@ public class Serie {
 		this.id = id;
 	}
 
-	public double getCarga() {
-		return carga;
+	public String getWeight() {
+		return weight;
 	}
 
-	public void setCarga(double carga) {
-		this.carga = carga;
+	public void setWeight(String weight) {
+		this.weight = weight;
 	}
 
-	public long getRepeticoes() {
-		return repeticoes;
+	public int getSprints() {
+		return sprints;
 	}
 
-	public void setRepeticoes(long repeticoes) {
-		this.repeticoes = repeticoes;
+	public void setSprints(int sprints) {
+		this.sprints = sprints;
 	}
 
-	public long getQtdSeries() {
-		return qtdSeries;
+	public String getTime() {
+		return time;
 	}
 
-	public void setQtdSeries(long qtdSeries) {
-		this.qtdSeries = qtdSeries;
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
+	public long getRepetitions() {
+		return repetitions;
+	}
+
+	public void setRepetitions(long repetitions) {
+		this.repetitions = repetitions;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Exercise getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
+	}
+
+	public Workout getWorkout() {
+		return workout;
+	}
+
+	public void setWorkout(Workout workout) {
+		this.workout = workout;
 	}
 	
 	
