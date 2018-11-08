@@ -2,6 +2,7 @@ package com.fitnesshouse.api.documents;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -39,6 +40,7 @@ public class News {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Destinão da mensagem não pode ser vazio")
 	public String getFrom() {
 		return from;
 	}
