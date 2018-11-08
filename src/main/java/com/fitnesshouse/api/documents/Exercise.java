@@ -3,6 +3,8 @@ package com.fitnesshouse.api.documents;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fitnesshouse.api.enums.MuscleGroupEnum;
+
 @Document
 public class Exercise {
 
@@ -11,6 +13,7 @@ public class Exercise {
 
 	private String title;
 	private String description;
+	private MuscleGroupEnum muscleGroup;
 	private String image;
 	private String repetitions;
 	private String series;
@@ -25,11 +28,12 @@ public class Exercise {
 		super();
 	}
 
-	public Exercise(String id, String title, String description, String image, String repetitions, String series,
+	public Exercise(String id, String title, MuscleGroupEnum muscleGroup, String description, String image, String repetitions, String series,
 			String weight, int sprints, String time, String rest, String comments, boolean selected) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.muscleGroup = muscleGroup;
 		this.description = description;
 		this.image = image;
 		this.repetitions = repetitions;
@@ -64,6 +68,14 @@ public class Exercise {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public MuscleGroupEnum getMuscleGroup() {
+		return muscleGroup;
+	}
+
+	public void setMuscleGroup(MuscleGroupEnum muscleGroup) {
+		this.muscleGroup = muscleGroup;
 	}
 
 	public String getImage() {

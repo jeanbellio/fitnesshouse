@@ -38,6 +38,11 @@ public class WorkoutSheetController {
 		return ResponseEntity.ok(new Response<WorkoutSheet>(this.workoutSheetService.findById(id)));
 	}
 	
+	@GetMapping(path = "/workoutSheetStudent/{id}")
+	public ResponseEntity<Response<List<WorkoutSheet>>> findByIdStudent(@PathVariable(name = "idStudent") String idStudent) {
+		return ResponseEntity.ok(new Response<List<WorkoutSheet>>(this.workoutSheetService.findByIdStudent(idStudent)));
+	}
+	
 	@PostMapping
 	public ResponseEntity<Response<WorkoutSheet>> create(@Valid @RequestBody WorkoutSheet workoutSheet, BindingResult result) {
 		if (result.hasErrors()) {
