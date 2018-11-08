@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fitnesshouse.api.enums.WorkoutIdentifierEnum;
+import com.fitnesshouse.api.enums.MuscleGroupEnum;
 
 @Document
 public class Workout {
@@ -14,14 +14,14 @@ public class Workout {
 	private String id;
 
 	private String nameWorkout;
-	private WorkoutIdentifierEnum workoutIdentifier;
+	private MuscleGroupEnum workoutIdentifier;
 	private List<Exercise> exercises;
 
 	public Workout() {
 		super();
 	}
 
-	public Workout(String id, String nameWorkout, WorkoutIdentifierEnum workoutIdentifier, List<Exercise> exercises) {
+	public Workout(String id, String nameWorkout, MuscleGroupEnum workoutIdentifier, List<Exercise> exercises) {
 		super();
 		this.id = id;
 		this.nameWorkout = nameWorkout;
@@ -45,11 +45,11 @@ public class Workout {
 		this.nameWorkout = nameWorkout;
 	}
 
-	public WorkoutIdentifierEnum getWorkoutIdentifier() {
+	public MuscleGroupEnum getWorkoutIdentifier() {
 		return workoutIdentifier;
 	}
 
-	public void setWorkoutIdentifier(WorkoutIdentifierEnum workoutIdentifier) {
+	public void setWorkoutIdentifier(MuscleGroupEnum workoutIdentifier) {
 		this.workoutIdentifier = workoutIdentifier;
 	}
 

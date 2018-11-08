@@ -1,6 +1,6 @@
 package com.fitnesshouse.api.enums;
 
-public enum WorkoutIdentifierEnum {
+public enum MuscleGroupEnum {
 	ABS("Abdominais"),
     AEROBIC("Aeróbico"),
     ARMS("Braços"),
@@ -12,7 +12,7 @@ public enum WorkoutIdentifierEnum {
 	
     private String name;
  
-    WorkoutIdentifierEnum(String name) {
+    MuscleGroupEnum(String name) {
         this.name = name;
     }
  
