@@ -1,6 +1,8 @@
 package com.fitnesshouse.api.enums;
 
 public enum MuscleGroupEnum {
+	
+	FULLBODY("Corpo todo"),
 	ABS("Abdominais"),
     AEROBIC("Aeróbico"),
     ARMS("Braços"),
@@ -19,4 +21,22 @@ public enum MuscleGroupEnum {
     public String getName() {
         return name;
     }	
+    
+    public static MuscleGroupEnum findMuscleGroupByEnum(String enumName) {
+    	for (MuscleGroupEnum muscleGroup : values()) {
+			if(muscleGroup.name().equals(enumName)) {
+				return muscleGroup;
+			}
+		}
+    	return MuscleGroupEnum.FULLBODY;
+    }
+    
+    public static boolean isValid(String enumName) {
+    	for (MuscleGroupEnum muscleGroup : values()) {
+			if(muscleGroup.name().equals(enumName)) {
+				return true;
+			}
+		}
+    	return false;
+    }
 }
