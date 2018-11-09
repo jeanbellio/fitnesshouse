@@ -3,6 +3,7 @@ package com.fitnesshouse.api.documents;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -43,6 +44,7 @@ public class WorkoutSheet {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Título da ficha de treino não pode ser vazio")
 	public String getTitle() {
 		return title;
 	}
@@ -51,6 +53,7 @@ public class WorkoutSheet {
 		this.title = title;
 	}
 
+	@NotEmpty(message = "Descrição da ficha de treino não pode ser vazio")
 	public String getDescription() {
 		return description;
 	}

@@ -2,6 +2,7 @@ package com.fitnesshouse.api.documents;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -37,6 +38,7 @@ public class Workout {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Nome do treino não pode ser vazio")
 	public String getNameWorkout() {
 		return nameWorkout;
 	}
