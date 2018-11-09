@@ -46,6 +46,13 @@ public class Exercise {
 		this.comments = comments;
 		this.selected = selected;
 	}
+	
+	public Exercise(String title, String description, MuscleGroupEnum muscleGroup) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.muscleGroup = muscleGroup;
+	}
 
 	public String getId() {
 		return id;

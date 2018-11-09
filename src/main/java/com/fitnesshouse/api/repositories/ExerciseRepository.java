@@ -3,14 +3,15 @@ package com.fitnesshouse.api.repositories;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.fitnesshouse.api.documents.Exercise;
+import com.fitnesshouse.api.enums.MuscleGroupEnum;
 
+@Repository
 public interface ExerciseRepository extends MongoRepository<Exercise, String> {
-//	@Query("{ 'name' : { '$regex' : ?0}, 'muscleGroup' : { '$regex' : ?1}}")
-//	List<Exercise> findByNameAndMuscleGroupName(String name, String muscleGroup);
+	List<Exercise> findByMuscleGroupAndTitleLike(MuscleGroupEnum muscleGroup, String name);
 
-	List<Exercise> findByTitleLike(String name);
+	void saveAll(List<Exercise> cars);
 
 }

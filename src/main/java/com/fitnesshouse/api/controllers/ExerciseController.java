@@ -26,15 +26,9 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 
-//	@GetMapping(path = "/{name}/{muscleGroup}")
-//	public ResponseEntity<Response<List<Exercise>>> findByNameAndMuscleGroup(@PathVariable(name = "name") String name, @PathVariable String muscleGroup) {
-//		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByNameAndMuscleGroupName(name, muscleGroup)));
-//	}
-	
-	@SuppressWarnings("deprecation")
-	@GetMapping(path = "/{name}")
-	public ResponseEntity<Response<List<Exercise>>> findByTitle(@PathVariable(name = "name") String name) {
-		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByTitle(name)));
+	@GetMapping(path = "/{name}/{muscleGroupName}")
+	public ResponseEntity<Response<List<Exercise>>> findByTitleAndMusleGroup(@PathVariable(name = "name") String name, @PathVariable(name = "muscleGroupName") String muscleGroupName) {
+		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupAndTitleLike(name, muscleGroupName)));
 	}
 	
 	/**
