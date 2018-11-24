@@ -27,8 +27,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return this.exerciseRepository.findByMuscleGroupAndTitleLike(muscleGroup, name);
 	}
 
-	@Override
+	/*@Override
 	public void saveAll(List<Exercise> exercises) {
 		this.exerciseRepository.saveAll(exercises);
-	}
+	}*/
 }

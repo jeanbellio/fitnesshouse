@@ -9,5 +9,5 @@ public interface ExerciseService {
 	
 	List<Exercise> findByMuscleGroupAndTitleLike(String name, String muscleGroupName);
 	
-	void saveAll(List<Exercise> exercises);
+	//void saveAll(List<Exercise> exercises);
 }
