@@ -17,23 +17,25 @@ public class WorkoutSheet {
 	private String description;
 	private Date dtFinish;
 	private Date dtStart;
-	private User student;
+	private String idStudent;
 	private List<Workout> workouts;
+	private String idTeacher;
 
 	public WorkoutSheet() {
 		super();
 	}
 
-	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, User student,
-			List<Workout> workouts) {
+	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, String idStudent,
+			List<Workout> workouts, String idTeacher) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.dtFinish = dtFinish;
 		this.dtStart = dtStart;
-		this.student = student;
+		this.idStudent = idStudent;
 		this.workouts = workouts;
+		this.idTeacher = idTeacher;
 	}
 
 	public String getId() {
@@ -44,7 +46,7 @@ public class WorkoutSheet {
 		this.id = id;
 	}
 
-	@NotEmpty(message = "Título da ficha de treino não pode ser vazio")
+	//@NotEmpty(message = "Título da ficha de treino não pode ser vazio")
 	public String getTitle() {
 		return title;
 	}
@@ -53,7 +55,7 @@ public class WorkoutSheet {
 		this.title = title;
 	}
 
-	@NotEmpty(message = "Descrição da ficha de treino não pode ser vazio")
+	//@NotEmpty(message = "Descrição da ficha de treino não pode ser vazio")
 	public String getDescription() {
 		return description;
 	}
@@ -78,14 +80,6 @@ public class WorkoutSheet {
 		this.dtStart = dtStart;
 	}
 
-	public User getUser() {
-		return student;
-	}
-
-	public void setUser(User student) {
-		this.student = student;
-	}
-
 	public List<Workout> getWorkouts() {
 		return workouts;
 	}
@@ -93,5 +87,22 @@ public class WorkoutSheet {
 	public void setWorkouts(List<Workout> workouts) {
 		this.workouts = workouts;
 	}
+
+	public String getIdTeacher() {
+		return idTeacher;
+	}
+
+	public void setIdTeacher(String idTeacher) {
+		this.idTeacher = idTeacher;
+	}
+
+	public String getIdStudent() {
+		return idStudent;
+	}
+
+	public void setIdStudent(String idStudent) {
+		this.idStudent = idStudent;
+	}
+	
 
 }
