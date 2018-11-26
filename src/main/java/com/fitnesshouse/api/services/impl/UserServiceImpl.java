@@ -5,44 +5,48 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitnesshouse.api.documents.Student;
-import com.fitnesshouse.api.repositories.StudentRepository;
-import com.fitnesshouse.api.services.StudentService;
+import com.fitnesshouse.api.documents.User;
+import com.fitnesshouse.api.repositories.UserRepository;
+import com.fitnesshouse.api.services.UserService;
 
 @Service
-public class StudentServiceImpl implements StudentService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private StudentRepository studentRepository;
+	private UserRepository userRepository;
 	
 	@Override
-	public List<Student> findAll() {
-		return this.studentRepository.findAll(); 
+	public List<User> findAll() {
+		return this.userRepository.findAll(); 
 	}
 
 	@Override
-	public Student findById(String id) {
-		return this.studentRepository.findOne(id);
+	public User findById(String id) {
+		return this.userRepository.findOne(id);
 	}
 
 	@Override
-	public Student create(Student student) {
-		return this.studentRepository.save(student);
+	public User create(User user) {
+		return this.userRepository.save(user);
 	}
 
 	@Override
-	public Student update(Student student) {
-		return this.studentRepository.save(student);
+	public User update(User user) {
+		return this.userRepository.save(user);
 	}
 
 	@Override
 	public void delete(String id) {
-		this.studentRepository.delete(id);
+		this.userRepository.delete(id);
 	}
 
 	@Override
-	public List<Student> findByName(String name) {
-		return this.studentRepository.findByName(name);
+	public List<User> findByNameAndType(String name, String type) {
+		return this.userRepository.findByNameAndType(name, type);
 	}
 
+	@Override
+	public User login(User user) {
+		return this.userRepository.login(user.getEmail(), user.getPassword());
+	}
 }
