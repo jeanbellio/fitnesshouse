@@ -79,8 +79,8 @@ public class UserController {
 	
 	@PostMapping(path = "/login")
 	public ResponseEntity<Response> login(@Valid @RequestBody User user) {
-		User userAux = this.userService.login(user);
-		if(userAux != null) {
+		User userAux = this.userService.findByEmail(user);
+		if(userAux != null && userAux.getPassword() != null && userAux.getPassword().equals(user.getPassword())) {
 			return ResponseEntity.ok(new Response<User>(userAux));
 		}else {
 			List<String> erros = new ArrayList<String>();

@@ -18,4 +18,7 @@ public interface UserService {
 	List<User> findByNameAndType(String name, String type);
 	
 	User login(User user);
+	
+	User findByEmail(User user);
+	
 }

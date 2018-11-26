@@ -12,7 +12,10 @@ public interface UserRepository extends MongoRepository<User, String> {
 	@Query("{ 'name' : { '$regex' : ?0}, 'type' : { '$regex' : ?0}}")
 	List<User> findByNameAndType(String name, String type);
 	
-	@Query(value = "{ $and: [ { 'email' : ?0 }, { 'password' : ?0 } ] }")
+	@Query(value = "{ $and: [ { 'email' : ?0 } , { 'password' : ?0 } ] }")
 	User login(String email, String password);
-
+	
+	@Query(value = "{ 'email' : ?0 }")
+	User findByEmail(String email);
+	
 }

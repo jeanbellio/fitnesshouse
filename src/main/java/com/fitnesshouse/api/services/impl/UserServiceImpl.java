@@ -49,4 +49,9 @@ public class UserServiceImpl implements UserService {
 	public User login(User user) {
 		return this.userRepository.login(user.getEmail(), user.getPassword());
 	}
+	
+	@Override
+	public User findByEmail(User user) {
+		return this.userRepository.findByEmail(user.getEmail());
+	}
 }
