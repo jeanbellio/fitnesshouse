@@ -27,6 +27,16 @@ public class ExerciseServiceImpl implements ExerciseService {
 		return this.exerciseRepository.findByMuscleGroupAndTitleLike(muscleGroup, name);
 	}
 
+	@Override
+	public Exercise update(Exercise exercise) {
+		return this.exerciseRepository.save(exercise);
+	}
+
+	@Override
+	public void delete(String id) {
+		this.exerciseRepository.delete(id);
+	}
+	
 	/*@Override
 	public void saveAll(List<Exercise> exercises) {
 		this.exerciseRepository.saveAll(exercises);

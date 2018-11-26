@@ -10,6 +10,7 @@ import com.fitnesshouse.api.enums.MuscleGroupEnum;
 
 @Repository
 public interface ExerciseRepository extends MongoRepository<Exercise, String> {
+	
 	List<Exercise> findByMuscleGroupAndTitleLike(MuscleGroupEnum muscleGroup, String name);
 
 	//void saveAll(List<Exercise> cars);

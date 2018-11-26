@@ -4,7 +4,8 @@ public enum MessageTypesEnum {
 	
 	MESSAGE(" mandou uma mensagem"), 
 	SYSTEM(" teve uma atualização"), 
-	RETURN(" respondeu seu feedback");
+	RETURN(" respondeu seu feedback"),
+	REQUEST(" solicitacao professor");
 	
 	private String suffix;
 

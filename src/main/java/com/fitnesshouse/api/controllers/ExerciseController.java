@@ -8,14 +8,17 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fitnesshouse.api.documents.Exercise;
+import com.fitnesshouse.api.documents.User;
 import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.ExerciseService;
 
@@ -46,5 +49,22 @@ public class ExerciseController {
 		return ResponseEntity.ok(new Response<Exercise>(this.exerciseService.create(exercise)));
 	}
 	
-
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<Response<Exercise>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Exercise exercise, BindingResult result) {
+		if (result.hasErrors()) {
+			List<String> erros = new ArrayList<String>();
+			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(new Response<Exercise>(erros));
+		}
+		
+		exercise.setId(id);
+		return ResponseEntity.ok(new Response<Exercise>(this.exerciseService.update(exercise)));
+	}
+	
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<Response<Integer>> delete(@PathVariable(name = "id") String id) {
+		this.exerciseService.delete(id);
+		return ResponseEntity.ok(new Response<Integer>(1));
+	}
+	
 }

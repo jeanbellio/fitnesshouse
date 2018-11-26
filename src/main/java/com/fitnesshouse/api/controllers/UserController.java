@@ -43,7 +43,7 @@ public class UserController {
 		return ResponseEntity.ok(new Response<User>(this.userService.findById(id)));
 	}*/
 	
-	@GetMapping(path = "/name/{name}/type/{type}")
+	@GetMapping(path = "/{name}/{type}")
 	public ResponseEntity<Response<List<User>>> findByName(@PathVariable("name") String name, @PathVariable("type") String type) {
 		return ResponseEntity.ok(new Response<List<User>>(this.userService.findByNameAndType(name, type)));
 	}
@@ -87,6 +87,5 @@ public class UserController {
 			erros.add("login invalido");
 			return ResponseEntity.badRequest().body(new Response<User>(erros));
 		}
-		
 	}
 }
