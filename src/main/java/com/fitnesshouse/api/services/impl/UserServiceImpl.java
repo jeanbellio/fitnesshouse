@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> findByNameAndType(String name, String type) {
-		return this.userRepository.findByNameAndType(name, type);
+		return this.userRepository.findByTypeIgnoreCaseAndNameLikeIgnoreCase(type, name);
 	}
 
 	@Override
@@ -51,7 +51,18 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User findByEmail(User user) {
-		return this.userRepository.findByEmail(user.getEmail());
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmailIgnoreCase(email);
+	}
+	
+	@Override
+	public List<User> findByType(String type) {
+		return this.userRepository.findByTypeIgnoreCase(type);
+	}
+	
+	@Override
+	public List<User> findStudentWithoutTeacher() {
+		String type = "A";
+		return this.userRepository.findByTypeAndIdTeacherIsNull(type);
 	}
 }

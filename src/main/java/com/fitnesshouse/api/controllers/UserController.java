@@ -28,9 +28,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping
-	public ResponseEntity<Response<List<User>>> findAllByType(@PathVariable(name = "type") String type){
-		return ResponseEntity.ok(new Response<List<User>>(this.userService.findAll()));
+	@GetMapping(path = "/{type}")
+	public ResponseEntity<Response<List<User>>> findByType(@PathVariable(name = "type") String type){
+		return ResponseEntity.ok(new Response<List<User>>(this.userService.findByType(type)));
+	}
+	
+	@GetMapping(path = "/student")
+	public ResponseEntity<Response<List<User>>> findStudentWithoutTeacher(){
+		return ResponseEntity.ok(new Response<List<User>>(this.userService.findStudentWithoutTeacher()));
 	}
 	
 	/*@GetMapping
@@ -38,13 +43,13 @@ public class UserController {
 		return ResponseEntity.ok(new Response<List<User>>(this.userService.findAll()));
 	}*/
 	
-	/*@GetMapping(path = "/{id}")
+	@GetMapping(path = "/id/{id}")
 	public ResponseEntity<Response<User>> findById(@PathVariable(name = "id") String id) {
 		return ResponseEntity.ok(new Response<User>(this.userService.findById(id)));
-	}*/
+	}
 	
 	@GetMapping(path = "/{name}/{type}")
-	public ResponseEntity<Response<List<User>>> findByName(@PathVariable("name") String name, @PathVariable("type") String type) {
+	public ResponseEntity<Response<List<User>>> findByNameAndType(@PathVariable("name") String name, @PathVariable("type") String type) {
 		return ResponseEntity.ok(new Response<List<User>>(this.userService.findByNameAndType(name, type)));
 	}
 	
@@ -79,7 +84,7 @@ public class UserController {
 	
 	@PostMapping(path = "/login")
 	public ResponseEntity<Response> login(@Valid @RequestBody User user) {
-		User userAux = this.userService.findByEmail(user);
+		User userAux = this.userService.findByEmail(user.getEmail());
 		if(userAux != null && userAux.getPassword() != null && userAux.getPassword().equals(user.getPassword())) {
 			return ResponseEntity.ok(new Response<User>(userAux));
 		}else {
@@ -88,4 +93,44 @@ public class UserController {
 			return ResponseEntity.badRequest().body(new Response<User>(erros));
 		}
 	}
+	
+	//@PostMapping(path = "/{idTeacher}/{idStudent}")
+	//public ResponseEntity<Response<User>> addStudentToTeacher(@PathVariable("idTeacher") String idTeacher,
+	//@PathVariable("idStudent") String idStudent) {
+
+	@PostMapping(path = "/addStudentToTeacher/{idTeacher}/{idStudent}")
+	public ResponseEntity<Response<User>> addStudenToTeacher(@PathVariable(name = "idTeacher") String idTeacher, 
+															 @PathVariable(name = "idStudent") String idStudent){
+		
+		List<String> erros = new ArrayList<String>();
+				
+		try {
+			if (idTeacher != null && idStudent != null) {
+				User student = new User();
+				User teacher = new User();
+
+				student = this.userService.findById(idStudent);
+				if (student != null) {
+					teacher = this.userService.findById(idTeacher);
+					if (teacher != null) {
+						student.setIdTeacher(idTeacher);
+						this.userService.update(student);
+						teacher.getStudents().add(student);
+						return ResponseEntity.ok(new Response<User>(userService.update(teacher)));
+					} else {
+						erros.add("invalid idTeacher");
+					}
+				} else {
+					erros.add("invalid idStudent");
+				}
+
+			}
+			erros.add("null parameters");
+		} catch (Exception e) {
+			erros.add(e.getMessage());
+		}
+		
+		return ResponseEntity.badRequest().body(new Response<User>(erros));
+	}
+	
 }

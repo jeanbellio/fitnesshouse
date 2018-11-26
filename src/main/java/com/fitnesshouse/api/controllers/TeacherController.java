@@ -78,25 +78,27 @@ public class TeacherController {
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 
-	@PostMapping(path = "/addUser/idTeacher/{idTeacher}/idUser/{idUser}")
-	public ResponseEntity<Response<Teacher>> addStudenToTeacher(@PathVariable("idTeacher") String idTeacher,
-																@PathVariable("idUser") String idUser) {
+	@PostMapping(path = "/addStudentToTeacher")
+	public ResponseEntity<Response<User>> addStudenToTeacher(@Valid @RequestBody String idTeacher, String idStudent){
+	//public ResponseEntity<Response<User>> addStudenToTeacher(@PathVariable("idTeacher") String idTeacher,
+	//															@PathVariable("idUser") String idStudent) {
 		
 		List<String> erros = new ArrayList<String>();
-		
+		UserService userService = null;
+				
 		try {
-			if (idTeacher != null && idUser != null) {
+			if (idTeacher != null && idStudent != null) {
 				User student = new User();
-				Teacher teacher = new Teacher();
+				User teacher = new User();
 
-				student = this.studentService.findById(idUser);
+				student = userService.findById(idStudent);
 				if (student != null) {
-					teacher = this.teacherService.findById(idTeacher);
+					teacher = userService.findById(idTeacher);
 					if (teacher != null) {
 						student.setIdTeacher(idTeacher);
 						this.studentService.update(student);
-						teacher.getUsers().add(student);
-						return ResponseEntity.ok(new Response<Teacher>(this.teacherService.update(teacher)));
+						teacher.getStudents().add(student);
+						return ResponseEntity.ok(new Response<User>(userService.update(teacher)));
 					} else {
 						erros.add("invalid idTeacher");
 					}
@@ -110,7 +112,7 @@ public class TeacherController {
 			erros.add(e.getMessage());
 		}
 		
-		return ResponseEntity.badRequest().body(new Response<Teacher>(erros));
+		return ResponseEntity.badRequest().body(new Response<User>(erros));
 	}
 
 }

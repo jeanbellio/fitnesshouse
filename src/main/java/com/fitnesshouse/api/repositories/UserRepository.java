@@ -10,12 +10,16 @@ import com.fitnesshouse.api.documents.User;
 public interface UserRepository extends MongoRepository<User, String> {
 
 	//@Query("{ 'name' : { '$regex' : ?0}, 'type' : { '$regex' : ?0}}")
-	List<User> findByNameAndType(String name, String type);
+	List<User> findByTypeIgnoreCaseAndNameLikeIgnoreCase(String type, String name);
 	
 	@Query(value = "{ $and: [ { 'email' : ?0 } , { 'password' : ?0 } ] }")
 	User login(String email, String password);
 	
-	@Query(value = "{ 'email' : ?0 }")
-	User findByEmail(String email);
+	//@Query(value = "{ 'email' : ?0 }")
+	User findByEmailIgnoreCase(String email);
+	
+	List<User> findByTypeIgnoreCase(String type);
+	
+	List<User> findByTypeAndIdTeacherIsNull(String type);
 	
 }

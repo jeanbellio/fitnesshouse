@@ -19,6 +19,10 @@ public interface UserService {
 	
 	User login(User user);
 	
-	User findByEmail(User user);
+	User findByEmail(String email);
+	
+	List<User> findByType(String type);
+	
+	List<User> findStudentWithoutTeacher();
 	
 }
