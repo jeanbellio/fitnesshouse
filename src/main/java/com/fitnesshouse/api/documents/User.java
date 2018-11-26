@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Student {
+public class User {
 
 	@Id
 	private String id;
@@ -19,13 +19,18 @@ public class Student {
 	private String idTeacher;
 	private List<Message> messages;
 	private List<Feedback> feedbacks;
+	private String cref;
+	private String bio;
+	private List<User> students;
+	private String type;
 
-	public Student() {
+	public User() {
 		super();
 	}
 
-	public Student(String id, String name, String email, long age, String sex, String password,
-			List<WorkoutSheet> workoutSheet, String idTeacher, List<Message> messages, List<Feedback> feedbacks) {
+	public User(String id, String name, String email, long age, String sex, String password,
+			List<WorkoutSheet> workoutSheet, String idTeacher, List<Message> messages, List<Feedback> feedbacks,
+			String cref, String bio, List<User> students, String type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,6 +42,10 @@ public class Student {
 		this.idTeacher = idTeacher;
 		this.messages = messages;
 		this.feedbacks = feedbacks;
+		this.cref = cref;
+		this.bio = bio;
+		this.students = students;
+		this.type = type;
 	}
 
 	public String getId() {
@@ -119,4 +128,36 @@ public class Student {
 		this.feedbacks = feedbacks;
 	}
 
+	public String getCref() {
+		return cref;
+	}
+
+	public void setCref(String cref) {
+		this.cref = cref;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public List<User> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<User> students) {
+		this.students = students;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 }

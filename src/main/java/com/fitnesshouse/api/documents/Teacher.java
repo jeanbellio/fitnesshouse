@@ -17,14 +17,14 @@ public class Teacher {
 	private String password;
 	private String cref;
 	private String bio;
-	private List<Student> students;
+	private List<User> students;
 
 	public Teacher() {
 		super();
 	}
 
 	public Teacher(String name, String email, long age, String sex, String password, String cref, String bio,
-			List<Student> students) {
+			List<User> students) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -101,11 +101,11 @@ public class Teacher {
 		this.bio = bio;
 	}
 
-	public List<Student> getStudents() {
+	public List<User> getUsers() {
 		return students;
 	}
 
-	public void setStudents(List<Student> students) {
+	public void setUsers(List<User> students) {
 		this.students = students;
 	}
 

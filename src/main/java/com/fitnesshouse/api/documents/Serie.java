@@ -13,7 +13,7 @@ public class Serie {
 	private int sprints;
 	private String time;
 	private long repetitions;
-	private Student student;
+	private User student;
 	private Exercise exercise;
 	private Workout workout;
 	
@@ -21,7 +21,7 @@ public class Serie {
 		super();
 	}
 
-	public Serie(String id, String weight, int sprints, String time, long repetitions, Student student, Exercise exercise,
+	public Serie(String id, String weight, int sprints, String time, long repetitions, User student, Exercise exercise,
 			Workout workout) {
 		super();
 		this.id = id;
@@ -74,11 +74,11 @@ public class Serie {
 		this.repetitions = repetitions;
 	}
 
-	public Student getStudent() {
+	public User getUser() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setUser(User student) {
 		this.student = student;
 	}
 

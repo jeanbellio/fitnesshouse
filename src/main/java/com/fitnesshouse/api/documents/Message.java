@@ -12,7 +12,7 @@ public class Message {
 	@Id
 	private String id;
 
-	private Student student;
+	private User student;
 	private Teacher teacher;
 	private String message;
 	private Date dtMessage;
@@ -21,7 +21,7 @@ public class Message {
 		super();
 	}
 
-	public Message(String id, Student student, Teacher teacher, String message, Date dtMessage) {
+	public Message(String id, User student, Teacher teacher, String message, Date dtMessage) {
 		super();
 		this.id = id;
 		this.student = student;
@@ -38,11 +38,11 @@ public class Message {
 		this.id = id;
 	}
 
-	public Student getStudent() {
+	public User getUser() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setUser(User student) {
 		this.student = student;
 	}
 

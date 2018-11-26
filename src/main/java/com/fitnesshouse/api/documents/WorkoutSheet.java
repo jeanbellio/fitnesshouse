@@ -17,14 +17,14 @@ public class WorkoutSheet {
 	private String description;
 	private Date dtFinish;
 	private Date dtStart;
-	private Student student;
+	private User student;
 	private List<Workout> workouts;
 
 	public WorkoutSheet() {
 		super();
 	}
 
-	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, Student student,
+	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, User student,
 			List<Workout> workouts) {
 		super();
 		this.id = id;
@@ -78,11 +78,11 @@ public class WorkoutSheet {
 		this.dtStart = dtStart;
 	}
 
-	public Student getStudent() {
+	public User getUser() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setUser(User student) {
 		this.student = student;
 	}
 

@@ -11,14 +11,14 @@ public class Feedback {
 
 	private Teacher teacher;
 	private String description;
-	private Student student;
+	private User student;
 	private boolean anonimo;
 	
 	public Feedback() {
 		super();
 	}
 
-	public Feedback(String id, Teacher teacher, String description, Student student, boolean anonimo) {
+	public Feedback(String id, Teacher teacher, String description, User student, boolean anonimo) {
 		super();
 		this.id = id;
 		this.teacher = teacher;
@@ -51,11 +51,11 @@ public class Feedback {
 		this.description = description;
 	}
 
-	public Student getStudent() {
+	public User getStudent() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setStudent(User student) {
 		this.student = student;
 	}
 
