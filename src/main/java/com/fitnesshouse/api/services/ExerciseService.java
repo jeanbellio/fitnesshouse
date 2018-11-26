@@ -3,10 +3,16 @@ package com.fitnesshouse.api.services;
 import java.util.List;
 
 import com.fitnesshouse.api.documents.Exercise;
+import com.fitnesshouse.api.documents.User;
 
 public interface ExerciseService {
-//	List<Exercise> findByNameAndMuscleGroupName(String name, String muscleGroup);
 	Exercise create(Exercise student);
 	
-	@Deprecated List<Exercise> findByTitle(String name);
+	List<Exercise> findByMuscleGroupAndTitleLike(String name, String muscleGroupName);
+	
+	Exercise update(Exercise exercise);
+	
+	void delete(String id);
+	
+	//void saveAll(List<Exercise> exercises);
 }

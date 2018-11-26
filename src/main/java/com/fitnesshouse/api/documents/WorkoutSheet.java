@@ -3,6 +3,7 @@ package com.fitnesshouse.api.documents;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,14 +17,14 @@ public class WorkoutSheet {
 	private String description;
 	private Date dtFinish;
 	private Date dtStart;
-	private Student student;
+	private User student;
 	private List<Workout> workouts;
 
 	public WorkoutSheet() {
 		super();
 	}
 
-	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, Student student,
+	public WorkoutSheet(String id, String title, String description, Date dtFinish, Date dtStart, User student,
 			List<Workout> workouts) {
 		super();
 		this.id = id;
@@ -43,6 +44,7 @@ public class WorkoutSheet {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Título da ficha de treino não pode ser vazio")
 	public String getTitle() {
 		return title;
 	}
@@ -51,6 +53,7 @@ public class WorkoutSheet {
 		this.title = title;
 	}
 
+	@NotEmpty(message = "Descrição da ficha de treino não pode ser vazio")
 	public String getDescription() {
 		return description;
 	}
@@ -75,11 +78,11 @@ public class WorkoutSheet {
 		this.dtStart = dtStart;
 	}
 
-	public Student getStudent() {
+	public User getUser() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setUser(User student) {
 		this.student = student;
 	}
 

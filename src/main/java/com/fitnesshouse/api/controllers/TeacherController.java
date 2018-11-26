@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitnesshouse.api.documents.Student;
+import com.fitnesshouse.api.documents.User;
 import com.fitnesshouse.api.documents.Teacher;
 import com.fitnesshouse.api.response.Response;
-import com.fitnesshouse.api.services.StudentService;
+import com.fitnesshouse.api.services.UserService;
 import com.fitnesshouse.api.services.TeacherService;
 
 @RestController
@@ -31,7 +31,7 @@ public class TeacherController {
 	private TeacherService teacherService;
 
 	@Autowired
-	private StudentService studentService;
+	private UserService studentService;
 
 	@GetMapping
 	public ResponseEntity<Response<List<Teacher>>> findAll() {
@@ -78,30 +78,30 @@ public class TeacherController {
 		return ResponseEntity.ok(new Response<Integer>(1));
 	}
 
-	@PostMapping(path = "/addStudent/idTeacher/{idTeacher}/idStudent/{idStudent}")
+	@PostMapping(path = "/addUser/idTeacher/{idTeacher}/idUser/{idUser}")
 	public ResponseEntity<Response<Teacher>> addStudenToTeacher(@PathVariable("idTeacher") String idTeacher,
-																@PathVariable("idStudent") String idStudent) {
+																@PathVariable("idUser") String idUser) {
 		
 		List<String> erros = new ArrayList<String>();
 		
 		try {
-			if (idTeacher != null && idStudent != null) {
-				Student student = new Student();
+			if (idTeacher != null && idUser != null) {
+				User student = new User();
 				Teacher teacher = new Teacher();
 
-				student = this.studentService.findById(idStudent);
+				student = this.studentService.findById(idUser);
 				if (student != null) {
 					teacher = this.teacherService.findById(idTeacher);
 					if (teacher != null) {
 						student.setIdTeacher(idTeacher);
 						this.studentService.update(student);
-						teacher.getStudents().add(student);
+						teacher.getUsers().add(student);
 						return ResponseEntity.ok(new Response<Teacher>(this.teacherService.update(teacher)));
 					} else {
 						erros.add("invalid idTeacher");
 					}
 				} else {
-					erros.add("invalid idStudent");
+					erros.add("invalid idUser");
 				}
 
 			}

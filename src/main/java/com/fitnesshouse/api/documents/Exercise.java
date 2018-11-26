@@ -1,5 +1,6 @@
 package com.fitnesshouse.api.documents;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -45,6 +46,13 @@ public class Exercise {
 		this.comments = comments;
 		this.selected = selected;
 	}
+	
+	public Exercise(String title, String description, MuscleGroupEnum muscleGroup) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.muscleGroup = muscleGroup;
+	}
 
 	public String getId() {
 		return id;
@@ -54,6 +62,7 @@ public class Exercise {
 		this.id = id;
 	}
 
+	@NotEmpty(message = "Título não pode ser vazio")
 	public String getTitle() {
 		return title;
 	}
@@ -62,6 +71,7 @@ public class Exercise {
 		this.title = title;
 	}
 
+	@NotEmpty(message = "Descrição não pode ser vazia")
 	public String getDescription() {
 		return description;
 	}
