@@ -16,5 +16,7 @@ public interface WorkoutSheetService {
 	
 	void delete(String id);
 	
-	List<WorkoutSheet> findByIdStudent(String idStudent);
+	List<WorkoutSheet> findHistoryByIdStudent(String idStudent);
+
+	WorkoutSheet findCurrentByIdStudent(String idStudent);
 }

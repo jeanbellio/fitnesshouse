@@ -39,5 +39,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 	public void delete(String id) {
 		this.workoutRepository.delete(id);
 	}
+	
+	@Override
+	public List<Workout> findByIdWorkoutSheet(String idWorkoutSheet){
+		return this.workoutRepository.findByIdWorkoutSheet(idWorkoutSheet);
+	}
 
 }

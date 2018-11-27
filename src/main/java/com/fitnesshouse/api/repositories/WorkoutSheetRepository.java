@@ -9,6 +9,8 @@ import com.fitnesshouse.api.documents.WorkoutSheet;
 
 public interface WorkoutSheetRepository extends MongoRepository<WorkoutSheet, String> {
 
-	@Query("{ 'name' : { '$regex' : ?0}}")
+	//@Query("{ 'name' : { '$regex' : ?0}}")
 	List<WorkoutSheet> findByIdStudent(String idStudent);
+
+	WorkoutSheet findCurrentByIdStudent(String idStudent);
 }

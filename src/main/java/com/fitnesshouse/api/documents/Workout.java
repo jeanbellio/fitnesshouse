@@ -16,18 +16,20 @@ public class Workout {
 
 	private String nameWorkout;
 	private MuscleGroupEnum workoutIdentifier;
-	private List<Exercise> exercises;
+	private List<Serie> series;
+	private String idWorkoutSheet;
 
 	public Workout() {
 		super();
 	}
 
-	public Workout(String id, String nameWorkout, MuscleGroupEnum workoutIdentifier, List<Exercise> exercises) {
+	public Workout(String id, String nameWorkout, MuscleGroupEnum workoutIdentifier, List<Serie> series, String idWorkoutSheet) {
 		super();
 		this.id = id;
 		this.nameWorkout = nameWorkout;
 		this.workoutIdentifier = workoutIdentifier;
-		this.exercises = exercises;
+		this.series = series;
+		this.idWorkoutSheet = idWorkoutSheet;
 	}
 
 	public String getId() {
@@ -38,7 +40,7 @@ public class Workout {
 		this.id = id;
 	}
 
-	@NotEmpty(message = "Nome do treino não pode ser vazio")
+	//@NotEmpty(message = "Nome do treino não pode ser vazio")
 	public String getNameWorkout() {
 		return nameWorkout;
 	}
@@ -55,12 +57,25 @@ public class Workout {
 		this.workoutIdentifier = workoutIdentifier;
 	}
 
-	public List<Exercise> getExercises() {
-		return exercises;
+	public List<Serie> getSeries() {
+		return series;
 	}
 
-	public void setExercises(List<Exercise> exercises) {
-		this.exercises = exercises;
+	public void setSerie(List<Serie> series) {
+		this.series = series;
 	}
+
+	public String getIdWorkoutSheet() {
+		return idWorkoutSheet;
+	}
+
+	public void setIdWorkoutSheet(String idWorkoutSheet) {
+		this.idWorkoutSheet = idWorkoutSheet;
+	}
+
+	public void setSeries(List<Serie> series) {
+		this.series = series;
+	}
+	
 
 }

@@ -43,9 +43,14 @@ public class WorkoutSheetController {
 		return ResponseEntity.ok(new Response<WorkoutSheet>(this.workoutSheetService.findById(id)));
 	}
 	
-	@GetMapping(path = "/workoutSheetStudent/{id}")
-	public ResponseEntity<Response<List<WorkoutSheet>>> findByIdStudent(@PathVariable(name = "idStudent") String idStudent) {
-		return ResponseEntity.ok(new Response<List<WorkoutSheet>>(this.workoutSheetService.findByIdStudent(idStudent)));
+	@GetMapping(path = "/student/{idStudent}")
+	public ResponseEntity<Response<WorkoutSheet>> findCurrentByIdStudent(@PathVariable(name = "idStudent") String idStudent) {
+		return ResponseEntity.ok(new Response<WorkoutSheet>(this.workoutSheetService.findCurrentByIdStudent(idStudent)));
+	}
+	
+	@GetMapping(path = "/history/{idStudent}")
+	public ResponseEntity<Response<List<WorkoutSheet>>> findHistoricoByStudent(@PathVariable(name = "idStudent") String idStudent) {
+		return ResponseEntity.ok(new Response<List<WorkoutSheet>>(this.workoutSheetService.findHistoryByIdStudent(idStudent)));
 	}
 	
 	/*@PostMapping

@@ -41,7 +41,12 @@ public class WorkoutSheetServiceImpl implements WorkoutSheetService {
 	}
 
 	@Override
-	public List<WorkoutSheet> findByIdStudent(String idStudent) {
+	public List<WorkoutSheet> findHistoryByIdStudent(String idStudent) {
 		return this.workoutSheetRepository.findByIdStudent(idStudent);
+	}
+	
+	@Override
+	public WorkoutSheet findCurrentByIdStudent(String idStudent) {
+		return this.workoutSheetRepository.findCurrentByIdStudent(idStudent);
 	}
 }

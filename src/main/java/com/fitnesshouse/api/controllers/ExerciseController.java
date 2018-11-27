@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fitnesshouse.api.documents.Exercise;
+import com.fitnesshouse.api.documents.Teacher;
 import com.fitnesshouse.api.documents.User;
 import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.ExerciseService;
@@ -29,6 +30,11 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 
+	@GetMapping
+	public ResponseEntity<Response<List<Exercise>>> findAll() {
+		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findAll()));
+	}
+	
 	@GetMapping(path = "/{name}/{muscleGroupName}")
 	public ResponseEntity<Response<List<Exercise>>> findByTitleAndMusleGroup(@PathVariable(name = "name") String name, @PathVariable(name = "muscleGroupName") String muscleGroupName) {
 		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupAndTitleLike(name, muscleGroupName)));

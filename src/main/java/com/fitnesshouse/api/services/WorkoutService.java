@@ -15,4 +15,6 @@ public interface WorkoutService {
 	Workout update(Workout workout);
 	
 	void delete(String id);
+	
+	List<Workout> findByIdWorkoutSheet(String idWorkoutSheet);
 }

@@ -37,6 +37,11 @@ public class ExerciseServiceImpl implements ExerciseService {
 		this.exerciseRepository.delete(id);
 	}
 	
+	@Override
+	public List<Exercise> findAll(){
+		return this.exerciseRepository.findAll();
+	}
+	
 	/*@Override
 	public void saveAll(List<Exercise> exercises) {
 		this.exerciseRepository.saveAll(exercises);

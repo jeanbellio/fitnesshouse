@@ -14,5 +14,7 @@ public interface ExerciseService {
 	
 	void delete(String id);
 	
+	List<Exercise> findAll();
+	
 	//void saveAll(List<Exercise> exercises);
 }
