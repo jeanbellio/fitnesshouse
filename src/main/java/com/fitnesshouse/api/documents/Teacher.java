@@ -1,13 +1,16 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Teacher {
+public class Teacher implements Serializable {
 
+	private static final long serialVersionUID = 7359452754933529705L;
+	
 	@Id
 	private String id;
 	private String name;

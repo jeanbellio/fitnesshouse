@@ -1,11 +1,15 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Feedback {
+public class Feedback implements Serializable {
 	
+	private static final long serialVersionUID = -475971507523359373L;
+
 	@Id
 	private String id;
 

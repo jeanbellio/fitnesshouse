@@ -1,5 +1,6 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fitnesshouse.api.enums.MuscleGroupEnum;
 
 @Document
-public class Workout {
+public class Workout implements Serializable {
+
+	private static final long serialVersionUID = -6872816870436638379L;
 
 	@Id
 	private String id;

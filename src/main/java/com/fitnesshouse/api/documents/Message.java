@@ -1,5 +1,6 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -7,7 +8,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Message {
+public class Message implements Serializable {
+
+	private static final long serialVersionUID = -3894974653942339993L;
 
 	@Id
 	private String id;

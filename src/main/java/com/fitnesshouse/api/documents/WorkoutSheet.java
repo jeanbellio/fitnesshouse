@@ -1,5 +1,6 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class WorkoutSheet {
+public class WorkoutSheet implements Serializable {
+
+	private static final long serialVersionUID = 8787898698787613739L;
 
 	@Id
 	private String id;

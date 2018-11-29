@@ -1,5 +1,6 @@
 package com.fitnesshouse.api.documents;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fitnesshouse.api.enums.MessageTypesEnum;
 
 @Document
-public class News {
+public class News implements Serializable {
+
+	private static final long serialVersionUID = -6829492414473649457L;
 
 	@Id
 	private String id;
