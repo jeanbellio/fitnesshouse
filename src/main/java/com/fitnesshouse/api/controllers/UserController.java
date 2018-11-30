@@ -90,13 +90,12 @@ public class UserController {
 		User userAux = this.userService.findByEmail(user.getEmail());
 		if(userAux != null && userAux.getPassword() != null && userAux.getPassword().equals(user.getPassword())) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-			String jsonAtivos = gson.toJson(userAux);
-			return ResponseEntity.ok(jsonAtivos);
+			String jsonUser = gson.toJson(userAux);
+			return ResponseEntity.ok(jsonUser);
 		}else {
 			List<String> erros = new ArrayList<String>();
 			erros.add("login invalido");
-			//return ResponseEntity.badRequest().body(new Response<User>(erros));
-			return ResponseEntity.badRequest().build();
+			return (ResponseEntity<String>) ResponseEntity.badRequest();
 		}
 	}
 	
