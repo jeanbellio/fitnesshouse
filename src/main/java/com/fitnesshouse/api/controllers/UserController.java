@@ -85,17 +85,17 @@ public class UserController {
 	}
 	
 	@PostMapping(path = "/login")
-	public ResponseEntity<String> login(@Valid @RequestBody User user) {
+	public ResponseEntity<Response<String>> login(@Valid @RequestBody User user) {
 	//public ResponseEntity<Response> login(@Valid @RequestBody User user) {
 		User userAux = this.userService.findByEmail(user.getEmail());
 		if(userAux != null && userAux.getPassword() != null && userAux.getPassword().equals(user.getPassword())) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 			String jsonUser = gson.toJson(userAux);
-			return ResponseEntity.ok(jsonUser);
+			return ResponseEntity.ok(new Response<String>(jsonUser));
 		}else {
 			List<String> erros = new ArrayList<String>();
 			erros.add("login invalido");
-			return (ResponseEntity<String>) ResponseEntity.badRequest();
+			return ResponseEntity.badRequest().body(new Response<String>(erros));
 		}
 	}
 	
