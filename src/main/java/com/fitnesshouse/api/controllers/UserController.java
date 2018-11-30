@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fitnesshouse.api.documents.User;
 import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.UserService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @RestController
 @RequestMapping(path = "/api/user")
@@ -83,14 +85,18 @@ public class UserController {
 	}
 	
 	@PostMapping(path = "/login")
-	public ResponseEntity<Response> login(@Valid @RequestBody User user) {
+	public ResponseEntity<String> login(@Valid @RequestBody User user) {
+	//public ResponseEntity<Response> login(@Valid @RequestBody User user) {
 		User userAux = this.userService.findByEmail(user.getEmail());
 		if(userAux != null && userAux.getPassword() != null && userAux.getPassword().equals(user.getPassword())) {
-			return ResponseEntity.ok(new Response<User>(userAux));
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+			String jsonAtivos = gson.toJson(userAux);
+			return ResponseEntity.ok(jsonAtivos);
 		}else {
 			List<String> erros = new ArrayList<String>();
 			erros.add("login invalido");
-			return ResponseEntity.badRequest().body(new Response<User>(erros));
+			//return ResponseEntity.badRequest().body(new Response<User>(erros));
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
