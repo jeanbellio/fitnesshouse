@@ -1,10 +1,11 @@
 package com.fitnesshouse.api.documents;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -67,16 +68,20 @@ public class WorkoutSheet implements Serializable {
 		this.description = description;
 	}
 
-	public Date getDtFinish() {
-		return dtFinish;
+	public String getDtFinish() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = dateFormat.format(dtFinish);
+		return strDate;
 	}
 
 	public void setDtFinish(Date dtFinish) {
 		this.dtFinish = dtFinish;
 	}
 
-	public Date getDtStart() {
-		return dtStart;
+	public String getDtStart() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = dateFormat.format(dtStart);
+        return strDate;
 	}
 
 	public void setDtStart(Date dtStart) {
