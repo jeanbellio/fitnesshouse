@@ -45,7 +45,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 	@Override
 	public List<Exercise> findByMuscleGroupLike(String muscleGroupName) {
 		MuscleGroupEnum muscleGroup = MuscleGroupEnum.findMuscleGroupByEnum(muscleGroupName);
-		return this.exerciseRepository.findByMuscleGroupLikeIgnoreCase(muscleGroup);
+		return this.exerciseRepository.findByMuscleGroupLike(muscleGroup);
 	}
 	
 	/*@Override

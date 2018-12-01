@@ -13,7 +13,7 @@ public interface ExerciseRepository extends MongoRepository<Exercise, String> {
 	
 	List<Exercise> findByMuscleGroupAndTitleLike(MuscleGroupEnum muscleGroup, String name);
 
-	List<Exercise> findByMuscleGroupLikeIgnoreCase(MuscleGroupEnum muscleGroup);
+	List<Exercise> findByMuscleGroupLike(MuscleGroupEnum muscleGroup);
 	
 	//void saveAll(List<Exercise> cars);
 
