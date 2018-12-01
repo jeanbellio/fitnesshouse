@@ -35,14 +35,13 @@ public class ExerciseController {
 		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findAll()));
 	}
 	
-	@GetMapping(path = "/{name}/{muscleGroupName}")
-	public ResponseEntity<Response<List<Exercise>>> findByTitleAndMusleGroup(@PathVariable(name = "name") String name, @PathVariable(name = "muscleGroupName") String muscleGroupName) {
-		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupAndTitleLike(name, muscleGroupName)));
-	}
-	
-	@GetMapping(path = "/muscleGroupName/{muscleGroupName}")
-	public ResponseEntity<Response<List<Exercise>>> findByMusleGroup(@PathVariable(name = "muscleGroupName") String muscleGroupName) {
-		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupLike(muscleGroupName)));
+	@GetMapping(path = "/{muscleGroupName}/{name}")
+	public ResponseEntity<Response<List<Exercise>>> findByMusleGroup(@PathVariable(name = "muscleGroupName") String muscleGroupName, @PathVariable(name = "name") String name) {
+		if(name.isEmpty()) {
+			return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupLike(muscleGroupName)));
+		}else {
+			return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupAndTitleLike(name, muscleGroupName)));
+		}
 	}
 	
 	/**
