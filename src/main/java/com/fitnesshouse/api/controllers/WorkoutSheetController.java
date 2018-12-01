@@ -49,7 +49,7 @@ public class WorkoutSheetController {
 	}
 	
 	@GetMapping(path = "/history/{idStudent}")
-	public ResponseEntity<Response<List<WorkoutSheet>>> findHistoricoByStudent(@PathVariable(name = "idStudent") String idStudent) {
+	public ResponseEntity<Response<List<WorkoutSheet>>> findHistoryByStudent(@PathVariable(name = "idStudent") String idStudent) {
 		return ResponseEntity.ok(new Response<List<WorkoutSheet>>(this.workoutSheetService.findHistoryByIdStudent(idStudent)));
 	}
 	
@@ -83,15 +83,14 @@ public class WorkoutSheetController {
 		return ResponseEntity.ok(new Response<User>(this.userService.update(student)));
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<WorkoutSheet>> update(@PathVariable(name = "id") String id, @Valid @RequestBody WorkoutSheet workoutSheet, BindingResult result) {
+	@PutMapping
+	public ResponseEntity<Response<WorkoutSheet>> update(@Valid @RequestBody WorkoutSheet workoutSheet, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(new Response<WorkoutSheet>(erros));
 		}
 		
-		workoutSheet.setId(id);
 		return ResponseEntity.ok(new Response<WorkoutSheet>(this.workoutSheetService.update(workoutSheet)));
 	}
 	

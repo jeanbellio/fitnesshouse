@@ -75,15 +75,14 @@ public class SerieController {
 		return ResponseEntity.ok(new Response<Workout>(this.workoutService.update(workout)));
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Serie>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Serie serie, BindingResult result) {
+	@PutMapping
+	public ResponseEntity<Response<Serie>> update(@Valid @RequestBody Serie serie, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(new Response<Serie>(erros));
 		}
 		
-		serie.setId(id);
 		return ResponseEntity.ok(new Response<Serie>(this.serieService.update(serie)));
 	}
 	

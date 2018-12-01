@@ -66,15 +66,14 @@ public class UserController {
 		return ResponseEntity.ok(new Response<User>(this.userService.create(user)));
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<User>> update(@PathVariable(name = "id") String id, @Valid @RequestBody User user, BindingResult result) {
+	@PutMapping
+	public ResponseEntity<Response<User>> update(@Valid @RequestBody User user, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(new Response<User>(erros));
 		}
 		
-		user.setId(id);
 		return ResponseEntity.ok(new Response<User>(this.userService.update(user)));
 	}
 	

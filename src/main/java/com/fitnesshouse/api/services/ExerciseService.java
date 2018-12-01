@@ -16,5 +16,7 @@ public interface ExerciseService {
 	
 	List<Exercise> findAll();
 	
+	List<Exercise> findByMuscleGroupLike(String muscleGroupName);
+	
 	//void saveAll(List<Exercise> exercises);
 }

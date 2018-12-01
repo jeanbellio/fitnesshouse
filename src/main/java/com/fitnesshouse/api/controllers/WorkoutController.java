@@ -76,15 +76,14 @@ public class WorkoutController {
 		return ResponseEntity.ok(new Response<WorkoutSheet>(this.workoutSheetService.update(workoutSheet)));
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Workout>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Workout workout, BindingResult result) {
+	@PutMapping
+	public ResponseEntity<Response<Workout>> update(@Valid @RequestBody Workout workout, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(new Response<Workout>(erros));
 		}
 		
-		workout.setId(id);
 		return ResponseEntity.ok(new Response<Workout>(this.workoutService.update(workout)));
 	}
 	

@@ -40,6 +40,11 @@ public class ExerciseController {
 		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupAndTitleLike(name, muscleGroupName)));
 	}
 	
+	@GetMapping(path = "/muscleGroupName/{muscleGroupName}")
+	public ResponseEntity<Response<List<Exercise>>> findByMusleGroup(@PathVariable(name = "muscleGroupName") String muscleGroupName) {
+		return ResponseEntity.ok(new Response<List<Exercise>>(this.exerciseService.findByMuscleGroupLike(muscleGroupName)));
+	}
+	
 	/**
 	 * Método responsável por capturar o endpoint /api/student/ (post) e criar um novo exercício. JSON exemplo:
 	 * {"title" : "Supino reto", "description" : "Deitado sob a barra..."}
@@ -55,15 +60,14 @@ public class ExerciseController {
 		return ResponseEntity.ok(new Response<Exercise>(this.exerciseService.create(exercise)));
 	}
 	
-	@PutMapping(path = "/{id}")
-	public ResponseEntity<Response<Exercise>> update(@PathVariable(name = "id") String id, @Valid @RequestBody Exercise exercise, BindingResult result) {
+	@PutMapping
+	public ResponseEntity<Response<Exercise>> update(@Valid @RequestBody Exercise exercise, BindingResult result) {
 		if (result.hasErrors()) {
 			List<String> erros = new ArrayList<String>();
 			result.getAllErrors().forEach(erro -> erros.add(erro.getDefaultMessage()));
 			return ResponseEntity.badRequest().body(new Response<Exercise>(erros));
 		}
 		
-		exercise.setId(id);
 		return ResponseEntity.ok(new Response<Exercise>(this.exerciseService.update(exercise)));
 	}
 	
