@@ -8,7 +8,7 @@ import com.fitnesshouse.api.documents.User;
 public interface ExerciseService {
 	Exercise create(Exercise student);
 	
-	List<Exercise> findByMuscleGroupAndTitleLike(String name, String muscleGroupName);
+	List<Exercise> findByMuscleGroupAndTitleLike(String muscleGroupName, String name);
 	
 	Exercise update(Exercise exercise);
 	

@@ -22,7 +22,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 
 	@Override
-	public List<Exercise> findByMuscleGroupAndTitleLike(String name, String muscleGroupName) {
+	public List<Exercise> findByMuscleGroupAndTitleLike(String muscleGroupName, String name) {
 		MuscleGroupEnum muscleGroup = MuscleGroupEnum.findMuscleGroupByEnum(muscleGroupName);
 		return this.exerciseRepository.findByMuscleGroupAndTitleLike(muscleGroup, name);
 	}
@@ -45,7 +45,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 	@Override
 	public List<Exercise> findByMuscleGroupLike(String muscleGroupName) {
 		MuscleGroupEnum muscleGroup = MuscleGroupEnum.findMuscleGroupByEnum(muscleGroupName);
-		return this.exerciseRepository.findByMuscleGroupLike(muscleGroup);
+		return this.exerciseRepository.findByMuscleGroup(muscleGroup);
 	}
 	
 	/*@Override
