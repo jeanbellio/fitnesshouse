@@ -68,22 +68,29 @@ public class WorkoutSheet implements Serializable {
 		this.description = description;
 	}
 
-	public String getDtFinish() {
+	/*public String getDtFinish() {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = dateFormat.format(dtFinish);
 		return strDate;
+	}*/
+	
+	public Date getDtFinish() {
+		return dtFinish;
 	}
 
 	public void setDtFinish(Date dtFinish) {
 		this.dtFinish = dtFinish;
 	}
 
-	public String getDtStart() {
+	/*public String getDtStart() {
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = dateFormat.format(dtStart);
         return strDate;
+	}*/
+	public Date getDtStart() {
+		return dtStart;
 	}
-
+	
 	public void setDtStart(Date dtStart) {
 		this.dtStart = dtStart;
 	}
