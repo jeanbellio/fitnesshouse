@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fitnesshouse.api.documents.User;
 import com.fitnesshouse.api.response.Response;
 import com.fitnesshouse.api.services.UserService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @RestController
 @RequestMapping(path = "/api/user")
@@ -35,19 +33,14 @@ public class UserController {
 		return ResponseEntity.ok(new Response<List<User>>(this.userService.findByType(type)));
 	}
 	
-	@GetMapping(path = "/student")
-	public ResponseEntity<Response<List<User>>> findStudentWithoutTeacher(){
-		return ResponseEntity.ok(new Response<List<User>>(this.userService.findStudentWithoutTeacher()));
-	}
-	
-	/*@GetMapping
-	public ResponseEntity<Response<List<User>>> findAllByType(@PathVariable(name = "type") String type){
-		return ResponseEntity.ok(new Response<List<User>>(this.userService.findAll()));
-	}*/
-	
 	@GetMapping(path = "/id/{id}")
 	public ResponseEntity<Response<User>> findById(@PathVariable(name = "id") String id) {
 		return ResponseEntity.ok(new Response<User>(this.userService.findById(id)));
+	}
+
+	@GetMapping(path = "/freeStudents/{name}")
+	public ResponseEntity<Response<List<User>>> findFreeStudentsByName(@PathVariable("name") String name) {
+		return ResponseEntity.ok(new Response<List<User>>(this.userService.findFreeStudentsByName(name)));
 	}
 	
 	@GetMapping(path = "/{name}/{type}")

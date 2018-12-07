@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<User> findStudentWithoutTeacher() {
-		String type = "A";
-		return this.userRepository.findByTypeAndIdTeacherIsNull(type);
+	public List<User> findFreeStudentsByName(String name) {
+		return this.userRepository.findByTypeIgnoreCaseAndNameLikeIgnoreCaseAndIdTeacherIsNull("A", name);
 	}
+	
 }

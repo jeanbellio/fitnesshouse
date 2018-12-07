@@ -21,5 +21,7 @@ public interface UserRepository extends MongoRepository<User, String> {
 	List<User> findByTypeIgnoreCase(String type);
 	
 	List<User> findByTypeAndIdTeacherIsNull(String type);
-	
+
+	List<User> findByTypeIgnoreCaseAndNameLikeIgnoreCaseAndIdTeacherIsNull(String type, String name);
+
 }

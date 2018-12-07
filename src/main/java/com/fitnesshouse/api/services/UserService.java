@@ -23,6 +23,6 @@ public interface UserService {
 	
 	List<User> findByType(String type);
 	
-	List<User> findStudentWithoutTeacher();
+	List<User> findFreeStudentsByName(String name);
 	
 }
